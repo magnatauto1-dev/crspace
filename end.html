@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CR Space — Сессия завершена</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: #f5f7f7;
+      color: #2c4a4c;
+      font-family: 'Montserrat', sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 13px;
+      letter-spacing: 8px;
+      text-transform: uppercase;
+      color: #4a7c7e;
+      margin-bottom: 80px;
+      font-weight: 500;
+    }
+
+    .message {
+      max-width: 400px;
+      line-height: 2.8;
+    }
+
+    .message p {
+      font-size: 15px;
+      color: #9ab8b9;
+      letter-spacing: 2px;
+      font-weight: 300;
+    }
+
+    .message p.accent {
+      color: #2c4a4c;
+      font-size: 18px;
+      letter-spacing: 3px;
+      margin-bottom: 8px;
+      font-weight: 400;
+    }
+
+    .back-btn {
+      margin-top: 80px;
+      background: transparent;
+      border: none;
+      color: #9ab8b9;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: color 0.4s ease;
+      text-decoration: none;
+      font-weight: 400;
+    }
+
+    .back-btn:hover {
+      color: #4a7c7e;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="logo">CR Space</div>
+
+  <div class="message">
+    <p class="accent">Сессия завершена.</p>
+    <p>Посиди немного.</p>
+    <p>Выдохни.</p>
+    <p>Не спеши возвращаться.</p>
+    <p>Это время — твоё.</p>
+  </div>
+
+  <a class="back-btn" href="index.html">вернуться в пространство</a>
+
+</body>
+</html>

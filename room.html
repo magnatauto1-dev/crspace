@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CR Space — Сессия</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: #000;
+      font-family: 'Montserrat', sans-serif;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .top-bar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 40px;
+      z-index: 10;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.4), transparent);
+    }
+
+    .top-logo {
+      font-size: 12px;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: #f5f7f7;
+      font-weight: 500;
+    }
+
+    .top-people {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .top-people span { color: #f5f7f7; }
+
+    .video-container {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+      transition: opacity 1.5s ease;
+    }
+
+    .video-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .video-container.fade-out {
+      opacity: 0;
+    }
+
+    #play-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.5);
+      color: #f5f7f7;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      padding: 18px 48px;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      display: none;
+    }
+
+    #play-overlay:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: #f5f7f7;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <div class="top-logo">CR Space</div>
+    <div class="top-people">в пространстве <span id="people-count">0</span> человек</div>
+  </div>
+
+  <div class="video-container" id="video-container">
+    <video id="session-video" autoplay playsinline>
+      <source src="https://res.cloudinary.com/dnznq0mhf/video/upload/v1774899356/session_gklrga.mp4" type="video/mp4">
+    </video>
+    <button id="play-overlay" onclick="startVideo()">Начать практику</button>
+  </div>
+
+  <script>
+    const video = document.getElementById('session-video');
+    const overlay = document.getElementById('play-overlay');
+    const container = document.getElementById('video-container');
+
+    video.play().catch(() => {
+      overlay.style.display = 'block';
+    });
+
+    function startVideo() {
+      video.play();
+      overlay.style.display = 'none';
+    }
+
+    video.addEventListener('ended', () => {
+      container.classList.add('fade-out');
+      setTimeout(() => {
+        window.location.href = 'end.html';
+      }, 1500);
+    });
+  </script>
+
+</body>
+</html>
