@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CR Space</title>
+  <title>CR Space — Вход</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       background-color: #f5f7f7;
-      color: #2c4a4c;
       font-family: 'Montserrat', sans-serif;
       min-height: 100vh;
       display: flex;
@@ -20,136 +19,42 @@
       text-align: center;
       overflow: hidden;
       padding: 40px 20px;
-      animation: fadeIn 1.5s ease;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    .logo-wrapper {
-      position: relative;
-      width: 160px;
-      height: 160px;
-      margin: 0 auto 40px;
+    #login-screen {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
     }
 
-    .breath-ring {
-      position: absolute;
-      top: 0; left: 0;
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      border: 1.5px solid #4a7c7e;
-      animation: breathe 6s ease-in-out infinite;
-    }
-
-    @keyframes breathe {
-      0%, 100% { transform: scale(1); opacity: 0.6; }
-      50% { transform: scale(1.15); opacity: 1; }
-    }
-
-    .logo-wrapper img {
-      position: relative;
-      z-index: 1;
-      width: 90px;
-      height: 90px;
+    .logo-img {
+      width: 180px;
+      height: 180px;
       object-fit: contain;
-    }
-
-    .session-label {
-      font-size: 13px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: #4a7c7e;
-      margin-bottom: 14px;
-      font-weight: 500;
-    }
-
-    .timer {
-      font-size: 76px;
-      font-weight: 300;
-      letter-spacing: 4px;
-      color: #2c4a4c;
-      margin-bottom: 40px;
-      font-variant-numeric: tabular-nums;
-      font-feature-settings: "tnum";
-    }
-
-    .slogan {
-      font-size: 13px;
-      color: #4a7c7e;
-      letter-spacing: 5px;
-      font-weight: 400;
-      margin-bottom: 50px;
-      text-transform: lowercase;
-    }
-
-    .schedule {
-      font-size: 12px;
-      color: #4a7c7e;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      line-height: 2.6;
-      font-weight: 400;
-    }
-
-    .schedule .local-time {
-      margin-top: 12px;
-      font-size: 11px;
-      color: #4a7c7e;
-      font-style: italic;
-      letter-spacing: 2px;
-      text-transform: none;
-      opacity: 0.7;
-    }
-
-    .music-btn {
-      position: fixed;
-      bottom: 24px;
-      right: 32px;
-      background: transparent;
-      border: none;
-      color: #4a7c7e;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 10px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: color 0.4s ease;
-      opacity: 0.7;
-    }
-
-    .music-btn:hover { opacity: 1; }
-
-    .join-block {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .join-label {
-      font-size: 13px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: #4a7c7e;
       margin-bottom: 32px;
-      font-weight: 500;
+      opacity: 0.9;
     }
 
-    .join-btn {
+    .tagline {
+      font-size: 13px;
+      color: #4a7c7e;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 60px;
+      margin-top: 8px;
+      font-weight: 400;
+    }
+
+    .google-btn {
       background: transparent;
       border: 1px solid #4a7c7e;
       color: #2c4a4c;
       font-family: 'Montserrat', sans-serif;
       font-size: 12px;
-      letter-spacing: 5px;
+      letter-spacing: 4px;
       text-transform: uppercase;
-      padding: 18px 52px;
+      padding: 18px 48px;
       cursor: pointer;
       transition: all 0.5s ease;
       font-weight: 400;
@@ -157,57 +62,68 @@
       max-width: 320px;
     }
 
-    .join-btn:hover {
+    .google-btn:hover {
       background: #4a7c7e;
       color: #f5f7f7;
     }
 
+    .error-msg {
+      margin-top: 24px;
+      font-size: 11px;
+      color: #c0a0a0;
+      letter-spacing: 2px;
+      display: none;
+      text-transform: uppercase;
+    }
+
+    #intro-screen {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: #ffffff;
+      z-index: 100;
+      transition: opacity 1.2s ease;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #intro-screen video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    #intro-screen.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+
     @media (max-width: 480px) {
-      .timer { font-size: 52px; letter-spacing: 2px; }
-      .logo-wrapper { width: 120px; height: 120px; }
-      .breath-ring { width: 120px; height: 120px; }
-      .logo-wrapper img { width: 68px; height: 68px; }
-      .music-btn { bottom: 16px; right: 20px; }
+      .logo-img { width: 140px; height: 140px; }
+      .tagline { font-size: 11px; letter-spacing: 3px; }
+      .google-btn { font-size: 11px; padding: 16px 32px; }
     }
   </style>
 </head>
 <body>
 
-  <audio id="bg-music" loop>
-    <source src="music.mp3" type="audio/mp3">
-  </audio>
-
-  <div id="waiting-block">
-    <div class="logo-wrapper">
-      <div class="breath-ring"></div>
-      <img src="logo.png" alt="CR Space">
-    </div>
-    <div class="session-label" id="session-name">утренняя практика начнётся через</div>
-    <div class="timer" id="timer">00:00:00</div>
-    <div class="slogan">calm · inspire · run</div>
-    <div class="schedule">
-      <div>утренняя практика — 07:00</div>
-      <div>вечерняя практика — 20:00</div>
-      <div class="local-time">по местному времени</div>
-    </div>
+  <div id="login-screen">
+    <img class="logo-img" src="logo.png" alt="CR Space">
+    <div class="tagline">пространство ясного состояния</div>
+    <button class="google-btn" onclick="signIn()">Войти через Google</button>
+    <div class="error-msg" id="error-msg">Доступ закрыт. Обратитесь к Павло.</div>
   </div>
 
-  <div class="join-block" id="join-block">
-    <div class="logo-wrapper">
-      <div class="breath-ring"></div>
-      <img src="logo.png" alt="CR Space">
-    </div>
-    <div class="join-label" id="active-session-name">утренняя практика</div>
-    <button class="join-btn" onclick="window.location.href='room.html'">
-      Войти в пространство
-    </button>
+  <div id="intro-screen">
+    <video id="intro-video" playsinline preload="auto">
+      <source src="https://res.cloudinary.com/dnznq0mhf/video/upload/v1774950862/logo_zdkwk4.mp4" type="video/mp4">
+    </video>
   </div>
-
-  <button class="music-btn" id="music-btn" onclick="toggleMusic()">♪ выключить музыку</button>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
+    import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
     import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
 
     const firebaseConfig = {
@@ -222,74 +138,51 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const db = getFirestore(app);
+    const provider = new GoogleAuthProvider();
 
-    onAuthStateChanged(auth, async (user) => {
-      if (!user) { window.location.href = 'login.html'; return; }
-      const docRef = doc(db, "whitelist", user.email);
-      const docSnap = await getDoc(docRef);
-      if (!docSnap.exists()) { await auth.signOut(); window.location.href = 'login.html'; }
-    });
+    window.signIn = async function() {
+      try {
+        const result = await signInWithPopup(auth, provider);
+        const email = result.user.email;
 
-    const music = document.getElementById('bg-music');
-    music.volume = 0.3;
-    music.play().catch(() => {});
+        const docRef = doc(db, "whitelist", email);
+        const docSnap = await getDoc(docRef);
 
-    window.toggleMusic = function() {
-      const btn = document.getElementById('music-btn');
-      if (music.paused) { music.play(); btn.textContent = '♪ выключить музыку'; }
-      else { music.pause(); btn.textContent = '♪ включить музыку'; }
-    }
+        if (docSnap.exists()) {
+          document.getElementById('login-screen').style.display = 'none';
+          const introScreen = document.getElementById('intro-screen');
+          const video = document.getElementById('intro-video');
 
-    const MORNING_HOUR = 7;
-    const EVENING_HOUR = 20;
-    const SESSION_DURATION = 60;
+          introScreen.style.display = 'flex';
 
-    function getStatus() {
-      const now = new Date();
-      const totalMinutes = now.getHours() * 60 + now.getMinutes();
-      const morningStart = MORNING_HOUR * 60;
-      const eveningStart = EVENING_HOUR * 60;
-      if (totalMinutes >= morningStart && totalMinutes < morningStart + SESSION_DURATION)
-        return { active: true, name: "утренняя практика" };
-      if (totalMinutes >= eveningStart && totalMinutes < eveningStart + SESSION_DURATION)
-        return { active: true, name: "вечерняя практика" };
-      return { active: false };
-    }
+          try {
+            await video.play();
+          } catch(e) {
+            window.location.href = 'index.html';
+            return;
+          }
 
-    function getNextSession() {
-      const now = new Date();
-      const morning = new Date(); morning.setHours(MORNING_HOUR, 0, 0, 0);
-      const evening = new Date(); evening.setHours(EVENING_HOUR, 0, 0, 0);
-      if (now < morning) return { time: morning, name: "утренняя практика" };
-      if (now < evening) return { time: evening, name: "вечерняя практика" };
-      const tomorrow = new Date(morning);
-      tomorrow.setDate(tomorrow.getDate() + 1);
-      return { time: tomorrow, name: "утренняя практика" };
-    }
+          video.addEventListener('ended', () => {
+            introScreen.classList.add('fade-out');
+            setTimeout(() => {
+              window.location.href = 'index.html';
+            }, 1200);
+          });
 
-    function update() {
-      const status = getStatus();
-      if (status.active) {
-        document.getElementById('waiting-block').style.display = 'none';
-        document.getElementById('join-block').style.display = 'flex';
-        document.getElementById('active-session-name').textContent = status.name;
-      } else {
-        document.getElementById('waiting-block').style.display = 'block';
-        document.getElementById('join-block').style.display = 'none';
-        const next = getNextSession();
-        const diff = next.time - new Date();
-        const h = Math.floor(diff / 3600000);
-        const m = Math.floor((diff % 3600000) / 60000);
-        const s = Math.floor((diff % 60000) / 1000);
-        document.getElementById('timer').textContent =
-          String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
-        document.getElementById('session-name').textContent =
-          next.name + ' начнётся через';
+          setTimeout(() => {
+            if (!video.ended) {
+              window.location.href = 'index.html';
+            }
+          }, 15000);
+
+        } else {
+          await auth.signOut();
+          document.getElementById('error-msg').style.display = 'block';
+        }
+      } catch (error) {
+        console.error(error);
       }
     }
-
-    update();
-    setInterval(update, 1000);
   </script>
 
 </body>
